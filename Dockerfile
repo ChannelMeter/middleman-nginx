@@ -1,11 +1,11 @@
-FROM octohost/ruby-2.0
+FROM octohost/ruby-2.1
 
-RUN gem install middleman therubyracer --no-rdoc --no-ri
+RUN gem install therubyracer --no-rdoc --no-ri
 
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
 
-RUN apt-get -y install nginx
+RUN apt-get -y -o Dpkg::Options::="--force-confnew"  install nginx
 
 RUN mkdir /srv/www
 
